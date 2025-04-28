@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Fitness Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <a href="/dashboard" class="logo">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>Fitness Tracker</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="/dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/goals">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Goals</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/track">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Track Progress</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/analytics">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <h1>Welcome Back, <span id="userName">User</span>!</h1>
+                    <p class="date" id="currentDate">Loading...</p>
+                </div>
+                <div class="header-right">
+                    <div class="profile-menu">
+                        <img src="../assets/default-avatar.png" alt="Profile" class="profile-pic">
+                        <div class="profile-info">
+                            <span id="userFullName">Loading...</span>
+                            <small id="userEmail">loading@email.com</small>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Quick Stats -->
+                <section class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Calories Burned</h3>
+                                <p id="caloriesBurned">0</p>
+                                <small>Today</small>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-walking"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Steps</h3>
+                                <p id="stepsCount">0</p>
+                                <small>Today</small>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Active Minutes</h3>
+                                <p id="activeMinutes">0</p>
+                                <small>Today</small>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Goals Met</h3>
+                                <p id="goalsCompleted">0</p>
+                                <small>This Week</small>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Activity -->
+                <section class="activity-section">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                        <button class="btn-primary" id="addActivityBtn">
+                            <i class="fas fa-plus"></i> Add Activity
+                        </button>
+                    </div>
+                    <div class="activity-list" id="recentActivities">
+                        <!-- Activities will be populated by JavaScript -->
+                    </div>
+                </section>
+
+                <!-- Goals Progress -->
+                <section class="goals-section">
+                    <div class="section-header">
+                        <h2>Goals Progress</h2>
+                        <button class="btn-primary" id="addGoalBtn">
+                            <i class="fas fa-plus"></i> New Goal
+                        </button>
+                    </div>
+                    <div class="goals-grid" id="goalsProgress">
+                        <!-- Goals will be populated by JavaScript -->
+                    </div>
+                </section>
+
+                <!-- Weekly Overview -->
+                <section class="overview-section">
+                    <div class="section-header">
+                        <h2>Weekly Overview</h2>
+                        <div class="overview-controls">
+                            <button class="btn-icon" id="prevWeek">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <span id="weekRange">This Week</span>
+                            <button class="btn-icon" id="nextWeek">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="weeklyChart"></canvas>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Activity Modal -->
+    <div class="modal" id="addActivityModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Activity</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="activityForm">
+                <div class="form-group">
+                    <label for="activityType">Activity Type</label>
+                    <select id="activityType" required>
+                        <option value="">Select an activity</option>
+                        <option value="running">Running</option>
+                        <option value="cycling">Cycling</option>
+                        <option value="swimming">Swimming</option>
+                        <option value="walking">Walking</option>
+                        <option value="gym">Gym Workout</option>
+                        <option value="yoga">Yoga</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duration (minutes)</label>
+                    <input type="number" id="duration" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="calories">Calories Burned</label>
+                    <input type="number" id="calories" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelActivity">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Activity</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Goal Modal -->
+    <div class="modal" id="addGoalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Set New Goal</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="goalForm">
+                <div class="form-group">
+                    <label for="goalType">Goal Type</label>
+                    <select id="goalType" required>
+                        <option value="">Select a goal type</option>
+                        <option value="steps">Daily Steps</option>
+                        <option value="calories">Calories Burned</option>
+                        <option value="activity">Active Minutes</option>
+                        <option value="weight">Weight Loss</option>
+                        <option value="custom">Custom Goal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="goalTarget">Target Value</label>
+                    <input type="number" id="goalTarget" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="goalDeadline">Deadline</label>
+                    <input type="date" id="goalDeadline" required>
+                </div>
+                <div class="form-group">
+                    <label for="goalNotes">Notes</label>
+                    <textarea id="goalNotes" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelGoal">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Goal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html> 

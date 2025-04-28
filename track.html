@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Progress - Hydration Tracker</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/track.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <span>HydroTracker</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i> Goals</a></li>
+                <li class="active"><a href="track.html"><i class="fas fa-chart-line"></i> Track Progress</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </nav>
+
+        <main class="content">
+            <header>
+                <h1>Track Progress</h1>
+                <div class="profile-menu">
+                    <span id="username">User</span>
+                    <img src="../assets/profile.png" alt="Profile" class="profile-pic">
+                </div>
+            </header>
+
+            <div class="tracking-grid">
+                <!-- Quick Add Section -->
+                <section class="quick-add card">
+                    <h2>Quick Add</h2>
+                    <div class="preset-amounts">
+                        <button class="preset-btn" data-amount="250">250ml</button>
+                        <button class="preset-btn" data-amount="500">500ml</button>
+                        <button class="preset-btn" data-amount="750">750ml</button>
+                    </div>
+                    <div class="custom-amount">
+                        <input type="number" id="customAmount" placeholder="Custom amount (ml)">
+                        <button id="addCustomAmount">Add</button>
+                    </div>
+                </section>
+
+                <!-- Today's Progress Section -->
+                <section class="todays-progress card">
+                    <h2>Today's Progress</h2>
+                    <div class="progress-circle">
+                        <canvas id="progressChart"></canvas>
+                        <div class="progress-text">
+                            <span class="current">0</span>
+                            <span class="target">/ 2000ml</span>
+                        </div>
+                    </div>
+                    <div class="next-target">
+                        <i class="fas fa-trophy"></i>
+                        <span>Next target: 2500ml</span>
+                    </div>
+                </section>
+
+                <!-- Weekly Overview Section -->
+                <section class="weekly-overview card">
+                    <h2>Weekly Overview</h2>
+                    <canvas id="weeklyChart"></canvas>
+                </section>
+
+                <!-- Insights Section -->
+                <section class="insights card">
+                    <h2>Insights</h2>
+                    <div class="insight-cards">
+                        <div class="insight-card">
+                            <i class="fas fa-clock"></i>
+                            <div class="insight-info">
+                                <h3>Peak Hydration Time</h3>
+                                <p>10:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="insight-card">
+                            <i class="fas fa-calendar-check"></i>
+                            <div class="insight-info">
+                                <h3>Best Streak</h3>
+                                <p>7 days</p>
+                            </div>
+                        </div>
+                        <div class="insight-card">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="insight-info">
+                                <h3>Monthly Average</h3>
+                                <p>2100ml/day</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Reminders Section -->
+                <section class="reminders card">
+                    <h2>Smart Reminders</h2>
+                    <div class="reminder-settings">
+                        <div class="reminder-toggle">
+                            <label class="switch">
+                                <input type="checkbox" id="reminderToggle" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <span>Enable Reminders</span>
+                        </div>
+                        <div class="reminder-intervals">
+                            <label>Remind me every:</label>
+                            <select id="reminderInterval">
+                                <option value="30">30 minutes</option>
+                                <option value="60" selected>1 hour</option>
+                                <option value="120">2 hours</option>
+                            </select>
+                        </div>
+                        <div class="active-hours">
+                            <label>Active Hours:</label>
+                            <div class="time-range">
+                                <input type="time" id="startTime" value="08:00">
+                                <span>to</span>
+                                <input type="time" id="endTime" value="22:00">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- History Section -->
+                <section class="history card">
+                    <h2>Recent History</h2>
+                    <div class="history-list" id="historyList">
+                        <!-- History entries will be added here dynamically -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/track.js"></script>
+</body>
+</html> 

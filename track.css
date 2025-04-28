@@ -1,0 +1,331 @@
+/* Track Page Styles */
+.tracking-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Quick Add Section */
+.quick-add {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.preset-amounts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+.preset-btn {
+    background: var(--primary-color-light);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.preset-btn:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.custom-amount {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.custom-amount input {
+    flex: 1;
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.custom-amount button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.custom-amount button:hover {
+    background: var(--primary-color-dark);
+}
+
+/* Today's Progress Section */
+.todays-progress {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+}
+
+.progress-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 1.5rem auto;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-text .current {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.progress-text .target {
+    font-size: 1rem;
+    color: #666;
+}
+
+.next-target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #666;
+    margin-top: 1rem;
+}
+
+/* Weekly Overview Section */
+.weekly-overview {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+}
+
+/* Insights Section */
+.insights {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+}
+
+.insight-cards {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.insight-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--background-light);
+    border-radius: 8px;
+}
+
+.insight-card i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.insight-info h3 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.insight-info p {
+    margin: 0.25rem 0 0;
+    color: #666;
+}
+
+/* Reminders Section */
+.reminders {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.reminder-settings {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.reminder-toggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.reminder-intervals select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.active-hours {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.time-range {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.time-range input {
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* History Section */
+.history {
+    grid-column: 2 / span 2;
+    grid-row: 3;
+}
+
+.history-list {
+    margin-top: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.history-entry {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.history-entry:last-child {
+    border-bottom: none;
+}
+
+.history-time {
+    font-size: 0.875rem;
+    color: #666;
+    min-width: 100px;
+}
+
+.history-amount {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .tracking-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .insights {
+        grid-column: 1 / span 2;
+        grid-row: 3;
+    }
+
+    .reminders {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    .history {
+        grid-column: 2;
+        grid-row: 4;
+    }
+}
+
+@media (max-width: 768px) {
+    .tracking-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .todays-progress,
+    .weekly-overview,
+    .insights,
+    .reminders,
+    .history {
+        grid-column: 1;
+    }
+
+    .weekly-overview {
+        grid-row: 3;
+    }
+
+    .insights {
+        grid-row: 4;
+    }
+
+    .reminders {
+        grid-row: 5;
+    }
+
+    .history {
+        grid-row: 6;
+    }
+} 

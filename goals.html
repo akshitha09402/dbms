@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H2O Tracker - Goals</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/goals.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="../assets/logo.png" alt="H2O Tracker Logo">
+                <h1>H2O Tracker</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="track.html"><i class="fas fa-tint"></i>Track</a></li>
+                <li class="active"><a href="goals.html"><i class="fas fa-bullseye"></i>Goals</a></li>
+                <li><a href="insights.html"><i class="fas fa-chart-line"></i>Insights</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i>Settings</a></li>
+            </ul>
+            <div class="user-info">
+                <img src="../assets/avatar.png" alt="User Avatar">
+                <span>John Doe</span>
+            </div>
+        </nav>
+
+        <main class="content">
+            <header>
+                <h1>Goals & Achievements</h1>
+                <div class="header-actions">
+                    <button class="btn-primary" id="editDailyGoalBtn">
+                        <i class="fas fa-edit"></i>
+                        Edit Daily Goal
+                    </button>
+                </div>
+            </header>
+
+            <section class="goals-section daily-goals">
+                <h2>Daily Hydration Goal</h2>
+                <div class="goal-card">
+                    <div class="goal-info">
+                        <div class="goal-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="goal-details">
+                            <h3>Today's Progress</h3>
+                            <div class="progress-bar">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span class="current">1200ml</span>
+                                <span class="goal">/ 2500ml</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="goals-section weekly-goals">
+                <div class="section-header">
+                    <h2>Weekly Goals</h2>
+                    <button class="btn-primary" id="addWeeklyGoalBtn">
+                        <i class="fas fa-plus"></i>
+                        Add Weekly Goal
+                    </button>
+                </div>
+                <div class="weekly-goals-grid"></div>
+            </section>
+
+            <section class="goals-section achievements">
+                <div class="section-header">
+                    <h2>Achievements</h2>
+                    <div class="achievement-filters">
+                        <button class="btn active">All</button>
+                        <button class="btn">Recent</button>
+                        <button class="btn">Locked</button>
+                    </div>
+                </div>
+                <div class="achievements-grid"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Edit Daily Goal Modal -->
+    <div class="modal" id="editDailyGoalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Daily Goal</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="dailyGoalInput">Daily Water Goal (ml)</label>
+                    <input type="number" id="dailyGoalInput" min="500" step="100" value="2500">
+                </div>
+                <div class="preset-goals">
+                    <h3>Preset Goals</h3>
+                    <div class="preset-buttons">
+                        <button class="preset-btn" data-amount="2000">2000ml</button>
+                        <button class="preset-btn" data-amount="2500">2500ml</button>
+                        <button class="preset-btn" data-amount="3000">3000ml</button>
+                        <button class="preset-btn" data-amount="3500">3500ml</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelDailyGoal">Cancel</button>
+                <button class="btn-primary" id="saveDailyGoal">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Weekly Goal Modal -->
+    <div class="modal" id="addWeeklyGoalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Weekly Goal</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label for="goalTitle">Goal Title</label>
+                    <input type="text" id="goalTitle" placeholder="Enter goal title">
+                </div>
+                <div class="input-group">
+                    <label for="goalDescription">Description</label>
+                    <textarea id="goalDescription" placeholder="Enter goal description"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="goalTarget">Target Value</label>
+                    <input type="number" id="goalTarget" min="1" step="1">
+                </div>
+                <div class="input-group">
+                    <label for="goalUnit">Unit</label>
+                    <select id="goalUnit">
+                        <option value="days">Days</option>
+                        <option value="ml">ml</option>
+                        <option value="bottles">Bottles</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelWeeklyGoal">Cancel</button>
+                <button class="btn-primary" id="saveWeeklyGoal">Add Goal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
+    <script src="../js/goals.js"></script>
+</body>
+</html> 

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H2O Tracker - Insights</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/insights.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                <span>H2O Tracker</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="dashboard.html"><i class="fas fa-home"></i>Dashboard</a></li>
+                <li><a href="track.html"><i class="fas fa-plus-circle"></i>Track</a></li>
+                <li><a href="goals.html"><i class="fas fa-bullseye"></i>Goals</a></li>
+                <li class="active"><a href="insights.html"><i class="fas fa-chart-line"></i>Insights</a></li>
+                <li><a href="achievements.html"><i class="fas fa-trophy"></i>Achievements</a></li>
+            </ul>
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header>
+                <h1>Hydration Insights</h1>
+                <div class="profile-menu">
+                    <img src="../assets/profile-placeholder.jpg" alt="Profile" class="profile-pic">
+                </div>
+            </header>
+
+            <div class="insights-grid">
+                <!-- Monthly Overview -->
+                <div class="insight-card">
+                    <h2>Monthly Overview</h2>
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+
+                <!-- Peak Hydration Times -->
+                <div class="insight-card">
+                    <h2>Peak Hydration Times</h2>
+                    <canvas id="peakTimesChart"></canvas>
+                </div>
+
+                <!-- Streak Analysis -->
+                <div class="insight-card">
+                    <h2>Goal Completion Streaks</h2>
+                    <div class="streak-info">
+                        <div class="current-streak">
+                            <span class="streak-number">0</span>
+                            <span class="streak-label">Current Streak</span>
+                        </div>
+                        <div class="best-streak">
+                            <span class="streak-number">0</span>
+                            <span class="streak-label">Best Streak</span>
+                        </div>
+                    </div>
+                    <div class="streak-calendar" id="streakCalendar"></div>
+                </div>
+
+                <!-- Hydration Patterns -->
+                <div class="insight-card">
+                    <h2>Weekly Patterns</h2>
+                    <canvas id="patternsChart"></canvas>
+                </div>
+
+                <!-- Achievement Progress -->
+                <div class="insight-card">
+                    <h2>Achievement Progress</h2>
+                    <div class="achievement-progress" id="achievementProgress"></div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="insight-card">
+                    <h2>Smart Recommendations</h2>
+                    <div class="recommendations" id="recommendations"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/insights.js"></script>
+</body>
+</html> 
